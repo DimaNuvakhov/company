@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: dima
+      changes:
+        - createTable:
+            tableName: employee
+            columns:
+              - column:
+                  name: id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: birth_date
+                  type: DATE
+              - column:
+                  name: hire_date
+                  type: DATE
+
+  - changeSet:
+      id: 2
+      author: dima
+      changes:
+        - createTable:
+            tableName: manager
+            columns:
+              - column:
+                  name: id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: birth_date
+                  type: DATE
+              - column:
+                  name: hire_date
+                  type: DATE
+              - column:
+                  name: employee_id
+                  type: binary(16)
+                  constraints:
+                    foreignKeyName: fk_manager_employee
+                    references: employee(id)
+
+  - changeSet:
+      id: 3
+      author: dima
+      changes:
+        - createTable:
+            tableName: other
+            columns:
+              - column:
+                  name: id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: birth_date
+                  type: DATE
+              - column:
+                  name: hire_date
+                  type: DATE
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: true
